@@ -1,0 +1,16 @@
+    body {
+        background-color: #212121;
+    }
+    body > .grid {
+        height: 100%;
+    }
+    .image {
+        margin-top: -100px;
+    }
+    .column {
+        max-width: 450px;
+    }
+
+    #login-btn {
+        background-color: #1db954;
+    }

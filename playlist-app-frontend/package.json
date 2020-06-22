@@ -30,6 +30,7 @@
     "webpack-merge": "^4.2.2"
   },
   "dependencies": {
-    "babel-runtime": "^6.26.0"
+    "babel-runtime": "^6.26.0",
+    "fomantic-ui": "^2.8.6"
   }
 }

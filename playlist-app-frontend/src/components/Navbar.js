@@ -1,23 +1,17 @@
 module.exports = `
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div id="navbar" class="ui top fixed inverted segment pointing attached">
+            <div class="ui container">
+                <div class="ui inverted secondary menu">
+                    <div id="app-name" class="item">Playlist App</div>
+                        <div id="left-menu" class="left menu">
+                        </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
-            </ul>
-            <a id="login-btn" class="btn btn-success my-2 my-sm-0">Login</a>
-            <a id="create-account-btn" class="btn btn-outline-success my-2 my-sm-0 ml-2">Create Account</a>
+                        <div id="right-menu" class="right menu">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        </nav>
     </header>
 `;
