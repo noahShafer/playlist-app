@@ -84,6 +84,7 @@ export default class HomeController extends View {
         let view = document.querySelector('#app');
         view.innerHTML = "";
         view.innerHTML += '<div id="playlists-songs" class="ui container margin-top margin-bottom"></div>';
+        view.querySelector('#playlists-songs').innerHTML += `<div class="ui container margin-top"><h2 class="ui header inverted">${playlist.playlist.name}</h2></div>`;
         playlist.songs.forEach(song => {
             view.querySelector('#playlists-songs').innerHTML += `
                 <div class="ui cards">
@@ -142,7 +143,6 @@ export default class HomeController extends View {
                 this.layoutAddToPlaylistForSong(e.target.id)
             })
         })
-        this.setupAudio()
     }
 
     layoutAddToPlaylistForSong(songId) {
@@ -166,67 +166,6 @@ export default class HomeController extends View {
                 })
             })
         });
-    }
-
-    setupAudio() {
-        function $(id) { return document.getElementById(id); };
-        const media = document.getElementById('audio');
-
-        let ui = {
-        play: 'playAudio',
-        audio: 'audio',
-        percentage: 'percentage',
-        seekObj: 'seekObj',
-        currentTime: 'currentTime'
-        };
-
-        function togglePlay() {
-        if (media.paused === false) {
-            media.pause();
-            $(ui.play).classList.remove('pause');
-        } else {
-            media.play();
-            $(ui.play).classList.add('pause');
-        }
-        }
-
-        function calculatePercentPlayed() {
-        let percentage = (media.currentTime / media.duration).toFixed(2) * 100;
-        $(ui.percentage).style.width = `${percentage}%`;
-        }
-
-        function calculateCurrentValue(currentTime) {
-        const currentMinute = parseInt(currentTime / 60) % 60;
-        const currentSecondsLong = currentTime % 60;
-        const currentSeconds = currentSecondsLong.toFixed();
-        const currentTimeFormatted = `${currentMinute < 10 ? `0${currentMinute}` : currentMinute}:${
-        currentSeconds < 10 ? `0${currentSeconds}` : currentSeconds
-        }`;
-        
-        return currentTimeFormatted;
-        }
-
-        function initProgressBar() {
-        const currentTime = calculateCurrentValue(media.currentTime);
-        $(ui.currentTime).innerHTML = currentTime;
-        $(ui.seekObj).addEventListener('click', seek);
-
-        media.onended = () => {
-            $(ui.play).classList.remove('pause');
-            $(ui.percentage).style.width = 0;
-            $(ui.currentTime).innerHTML = '00:00';
-        };
-
-        function seek(e) {
-            const percent = e.offsetX / this.offsetWidth;
-            media.currentTime = percent * media.duration;
-        }
-        
-        calculatePercentPlayed();
-        }
-
-        $(ui.play).addEventListener('click', togglePlay)
-        $(ui.audio).addEventListener('timeupdate', initProgressBar);
     }
 
     spotifyLogin() {
